@@ -125,83 +125,31 @@ function createRandomMessage() {
 //   }
 }
 
+
+
 function viewFavorites() {
   favoritesArea.innerText = favoriteMessages;
 
 
   hideMainPage();
 }
-//   var newArray = [];
-// function viewFavorites() {
-//   // favoritesArea.innerHTML = '';
-//   var clickedMessage;
-//
-//   for (i = 0; i < favoriteMessages.length; i++) {
-//     // favoritesArea.innerText = favoriteMessages[i];
-//     clickedMessage = new Message(favoriteMessages[i]);
-//     newArray.push(clickedMessage);
-//     favoritesArea.innerText = newArray;
-//   }
-//
-//
-//
-//   hideMainPage();
-//   newArray;
-// }
-
-// var clickedMessage = new Message(favoriteMessages[i]);
-
-// function viewFavorites() {
-//   for (i = 0; i < favoriteMessage.length; i++) {
-//     favoritesArea.innerText = favoriteMessages[i];
-//   }
-//
-//   hideMainPage();
-// }
-
-
-// function selectAffirmation() {
-//   var randomAffirmation = affirmations[getRandomIndex(affirmations)];
-//   currentQuote = randomAffirmation;
-// }
-//
-// function selectMantra() {
-//   var randomMantra = mantras[getRandomIndex(mantras)];
-//   currentQuote = randomMantra;
-// }
-
-// function showNewQuote () {
-//   mantraPhrase.innerText = affirmations[getRandomIndex(affirmations)]
-// }
-// var currentMessage = document.querySelector('.the-message'.value)
 
 function addToFavoriteList() {
-  // var currentMessage = new Message('.new-phrase');
+  
 
   event.preventDefault();
   favoriteMessages.push(currentQuote);
+  for (i = 0; i < favoriteMessages.length; i++) {
+    favoritesArea.innerHTML += `<ul class="favorite-area">
+    <li>${favoriteMessages[i]}</li></ul>`
+  }
   console.log(favoriteMessages);
 }
+
 
 function deleteMessage() {
   favoriteMessages.pop();
   favoritesArea.innerText = favoriteMessages;
   console.log(favoriteMessages);
 }
-//I want to save current message on display in favorite messages array
-//when the favorite button is clicked
-
-// function createRandomMessage() {
-  // if (checkAffirmationRadio.checked) {
-  // for (var i = 0; i < affirmations.length; i++) {
-  //   if (checkAffirmationRadio.checked) {
-  //     mantraPhrase.innerHTML = '';
-  //     mantraPhrase.innerHTML +=
-  //     `<p> class="new- phrase"${affirmations[getRandomIndex(affirmations)]}<p>`
-  // }//the radio button is checked in affirmation {
-  // }  //change the inner HTML from section to be phrase from affirmations array
-
-    //change the inner HTML from section to be phrase from mantras array
-// function createRandomMessage() {
-//   for (var i = 0; i < )
-// }
+//add innerHTML that adds ul and lis
