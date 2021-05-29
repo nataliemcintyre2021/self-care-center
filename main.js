@@ -19,10 +19,13 @@ class Message {
 // }
 // var currentAffirmation;
 
-var affirmations = ["I forgive myself and set myself free.",
-"I believe I can be all that I want to be.", "I am in the process of becoming the best version of myself.", "I have the freedom & power to create the life I desire.", "I choose to be kind to myself and love myself unconditionally.", "My possibilities are endless.", "I am worthy of my dreams.", "I am enough.", "I deserve to be healthy and feel good.", "I am full of energy and vitality and my mind is calm and peaceful.", "Every day I am getting healthier and stronger.", "I honor my body by trusting the signals that it sends me.", "I manifest perfect health by making smart choices."];
+var affirmations = [" I forgive myself and set myself free.",
+" I believe I can be all that I want to be." , " I am in the process of becoming the best version of myself.", " I have the freedom & power to create the life I desire.", " I choose to be kind to myself and love myself unconditionally.", " My possibilities are endless.", " I am worthy of my dreams.", " I am enough.", " I deserve to be healthy and feel good.", " I am full of energy and vitality and my mind is calm and peaceful.", " Every day I am getting healthier and stronger.", " I honor my body by trusting the signals that it sends me.", " I manifest perfect health by making smart choices."
+];
 
-var mantras = ["Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.", "Don’t let yesterday take up too much of today.", "Every day is a second chance.", "Tell the truth and love everyone.", "I am free from sadness.", "I am enough.", "In the beginning it is you, in the middle it is you and in the end it is you.", "I love myself.", "I am present now.", "Inhale the future, exhale the past.", "This too shall pass.", "Yesterday is not today.", "The only constant is change.", "Onward and upward.", "I am the sky, the rest is weather."];
+var mantras = [" Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.", " Don’t let yesterday take up too much of today.",
+" Every day is a second chance.", " Tell the truth and love everyone.", " I am free from sadness.", " I am enough.", " In the beginning it is you, in the middle it is you and in the end it is you.", " I love myself.", " I am present now.", " Inhale the future, exhale the past.", " This too shall pass.", " Yesterday is not today.", " The only constant is change.", " Onward and upward.",
+" I am the sky, the rest is weather."]
 
 var favoriteMessages = [];
 var currentQuote = ""
@@ -40,6 +43,11 @@ var meditationImage = document.querySelector('.meditation-img');
 var favoriteButton = document.querySelector('.favorite');
 var secondFavoriteButton = document.querySelector('.favorite-two');
 var quoteArea = document.querySelector('.quote-area');
+var favoritesArea = document.querySelector('.favorite-area');
+var mainPage = document.querySelector('.main-page');
+var viewFavoritesPage = document.querySelector('.view-favorites');
+var backToMainPageButton = document.querySelector('.back');
+var deleteMessageButton = document.querySelector('.delete');
 
 function hideImage() {
   meditationImage.classList.add('hidden');
@@ -51,9 +59,26 @@ function showFavoriteButton() {
   secondFavoriteButton.classList.remove('hidden');
 }
 
+function hideMainPage() {
+  mainPage.classList.add('hidden');
+  viewFavoritesPage.classList.remove('hidden');
+
+}
+
+function showMainPage() {
+  mainPage.classList.remove('hidden');
+  viewFavoritesPage.classList.add('hidden');
+}
+
 receiveMessageButton.addEventListener('click', createRandomMessage);
 
 favoriteButton.addEventListener('click', addToFavoriteList);
+
+secondFavoriteButton.addEventListener('click', viewFavorites);
+
+backToMainPageButton.addEventListener('click', showMainPage);
+
+deleteMessageButton.addEventListener('click', deleteMessage);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -99,6 +124,42 @@ function createRandomMessage() {
 //     }
 //   }
 }
+
+function viewFavorites() {
+  favoritesArea.innerText = favoriteMessages;
+
+
+  hideMainPage();
+}
+//   var newArray = [];
+// function viewFavorites() {
+//   // favoritesArea.innerHTML = '';
+//   var clickedMessage;
+//
+//   for (i = 0; i < favoriteMessages.length; i++) {
+//     // favoritesArea.innerText = favoriteMessages[i];
+//     clickedMessage = new Message(favoriteMessages[i]);
+//     newArray.push(clickedMessage);
+//     favoritesArea.innerText = newArray;
+//   }
+//
+//
+//
+//   hideMainPage();
+//   newArray;
+// }
+
+// var clickedMessage = new Message(favoriteMessages[i]);
+
+// function viewFavorites() {
+//   for (i = 0; i < favoriteMessage.length; i++) {
+//     favoritesArea.innerText = favoriteMessages[i];
+//   }
+//
+//   hideMainPage();
+// }
+
+
 // function selectAffirmation() {
 //   var randomAffirmation = affirmations[getRandomIndex(affirmations)];
 //   currentQuote = randomAffirmation;
@@ -122,7 +183,11 @@ function addToFavoriteList() {
   console.log(favoriteMessages);
 }
 
-
+function deleteMessage() {
+  favoriteMessages.pop();
+  favoritesArea.innerText = favoriteMessages;
+  console.log(favoriteMessages);
+}
 //I want to save current message on display in favorite messages array
 //when the favorite button is clicked
 
