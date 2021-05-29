@@ -129,10 +129,14 @@ body {
   font-style: italic;
 }
 
-img {
+.meditation-img {
   padding-top: 20px;
   width: 60px;
   height: 60px;
+}
+
+.hidden {
+  display: none;
 }
 
 .new-phrase {

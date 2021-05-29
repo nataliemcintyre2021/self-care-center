@@ -8,28 +8,63 @@
   //if input checked and button clicked, run random message function
 
 
-  var affirmations = ["I forgive myself and set myself free.",
+var affirmations = ["I forgive myself and set myself free.",
 "I believe I can be all that I want to be.", "I am in the process of becoming the best version of myself.", "I have the freedom & power to create the life I desire.", "I choose to be kind to myself and love myself unconditionally.", "My possibilities are endless.", "I am worthy of my dreams.", "I am enough.", "I deserve to be healthy and feel good.", "I am full of energy and vitality and my mind is calm and peaceful.", "Every day I am getting healthier and stronger.", "I honor my body by trusting the signals that it sends me.", "I manifest perfect health by making smart choices."];
 
 var mantras = ["Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.", "Don’t let yesterday take up too much of today.", "Every day is a second chance.", "Tell the truth and love everyone.", "I am free from sadness.", "I am enough.", "In the beginning it is you, in the middle it is you and in the end it is you.", "I love myself.", "I am present now.", "Inhale the future, exhale the past.", "This too shall pass.", "Yesterday is not today.", "The only constant is change.", "Onward and upward.", "I am the sky, the rest is weather."];
 
 
-receiveMessageButton.addEventListener('click', createRandomMessage);
+
 
 var receiveMessageButton = document.querySelector('.receive-message');
 
 var mantraPhrase = document.querySelector('.mantra-phrase');
 
-var messageSelector = document.querySelector()
-
+// var messageSelector = document.querySelector()
+// var radioButtons = document.getElementsbyName('message');
 var checkAffirmationRadio = document.getElementById('affirmation-radio');
+var checkMantraRadio = document.getElementById('mantra-radio');
+var meditationImage = document.querySelector('.meditation-img');
 
+function hideImage() {
+  meditationImage.classList.add('hidden');
+}
+
+receiveMessageButton.addEventListener('click', createRandomMessage);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
+ //check which radio button is selected;
+ //use value attribute. if value === then return true. if true,
+ //run for loop over that array and replace HTML
 function createRandomMessage() {
+  mantraPhrase.innerHTML = '';
+  if (checkAffirmationRadio.checked) {
+    hideImage()
+    mantraPhrase.innerHTML += `<article class='new-phrase'>
+      <h4>${affirmations[getRandomIndex(affirmations)]}</h4
+      </article`
+  } else if (checkMantraRadio.checked) {
+    hideImage()
+    mantraPhrase.innerHTML += `<article class='new-phrase'>
+      <h4>${mantras[getRandomIndex(mantras)]}</h4
+      </article`
+
+  }
+//   for (i = 0; i < radioButtons.length; i++) {
+//     if (radioButtons[i].checked === true) {
+//       mantraPhrase.innerHTML += `<article class='new-phrase'>
+//       <h3>${affirmations[getRandomIndex(affirmations)]}</h3
+//       </article`
+//     }
+//   }
+}
+
+
+
+
+// function createRandomMessage() {
   // if (checkAffirmationRadio.checked) {
   // for (var i = 0; i < affirmations.length; i++) {
   //   if (checkAffirmationRadio.checked) {
