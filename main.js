@@ -25,6 +25,7 @@ var affirmations = ["I forgive myself and set myself free.",
 var mantras = ["Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.", "Don’t let yesterday take up too much of today.", "Every day is a second chance.", "Tell the truth and love everyone.", "I am free from sadness.", "I am enough.", "In the beginning it is you, in the middle it is you and in the end it is you.", "I love myself.", "I am present now.", "Inhale the future, exhale the past.", "This too shall pass.", "Yesterday is not today.", "The only constant is change.", "Onward and upward.", "I am the sky, the rest is weather."];
 
 var favoriteMessages = [];
+var currentQuote = ""
 
 
 var receiveMessageButton = document.querySelector('.receive-message');
@@ -36,8 +37,9 @@ var mantraPhrase = document.querySelector('.mantra-phrase');
 var checkAffirmationRadio = document.getElementById('affirmation-radio');
 var checkMantraRadio = document.getElementById('mantra-radio');
 var meditationImage = document.querySelector('.meditation-img');
-var favoriteButton = document.querySelector('.favorite')
-var secondFavoriteButton = document.querySelector('.favorite-two')
+var favoriteButton = document.querySelector('.favorite');
+var secondFavoriteButton = document.querySelector('.favorite-two');
+var quoteArea = document.querySelector('.quote-area');
 
 function hideImage() {
   meditationImage.classList.add('hidden');
@@ -59,20 +61,34 @@ function getRandomIndex(array) {
  //check which radio button is selected;
  //use value attribute. if value === then return true. if true,
  //run for loop over that array and replace HTML
+ function selectAffirmation() {
+   var randomAffirmation = affirmations[getRandomIndex(affirmations)];
+   currentQuote = randomAffirmation;
+ }
+
+ function selectMantra() {
+   var randomMantra = mantras[getRandomIndex(mantras)];
+   currentQuote = randomMantra;
+ }
+
 function createRandomMessage() {
-  mantraPhrase.innerHTML = '';
+  // mantraPhrase.innerHTML = '';
   if (checkAffirmationRadio.checked) {
     hideImage();
-    mantraPhrase.innerHTML += `<article class='new-phrase'>
-      <h4>${affirmations[getRandomIndex(affirmations)]}</h4
-      </article`
-      showFavoriteButton();
+    selectAffirmation();
+    quoteArea.innerText = currentQuote;
+    // mantraPhrase.innerHTML += `<article class='new-phrase'>
+    //   <h4>${affirmations[getRandomIndex(affirmations)]}</h4
+    //   </article`
+    showFavoriteButton();
   } else if (checkMantraRadio.checked) {
-    hideImage()
-    mantraPhrase.innerHTML += `<article class='new-phrase'>
-      <h4 class="the-message">${mantras[getRandomIndex(mantras)]}</h4
-      </article`
-      showFavoriteButton();
+    hideImage();
+    selectMantra();
+    quoteArea.innerText = currentQuote;
+    // mantraPhrase.innerHTML += `<article class='new-phrase'>
+    //   <h4 class="the-message">${mantras[getRandomIndex(mantras)]}</h4
+    //   </article`
+    showFavoriteButton();
 
   }
 //   for (i = 0; i < radioButtons.length; i++) {
@@ -83,14 +99,26 @@ function createRandomMessage() {
 //     }
 //   }
 }
+// function selectAffirmation() {
+//   var randomAffirmation = affirmations[getRandomIndex(affirmations)];
+//   currentQuote = randomAffirmation;
+// }
+//
+// function selectMantra() {
+//   var randomMantra = mantras[getRandomIndex(mantras)];
+//   currentQuote = randomMantra;
+// }
 
+// function showNewQuote () {
+//   mantraPhrase.innerText = affirmations[getRandomIndex(affirmations)]
+// }
 // var currentMessage = document.querySelector('.the-message'.value)
 
 function addToFavoriteList() {
-  var currentMessage = new Message('.new-phrase');
+  // var currentMessage = new Message('.new-phrase');
 
   event.preventDefault();
-  favoriteMessages.push(currentMessage);
+  favoriteMessages.push(currentQuote);
   console.log(favoriteMessages);
 }
 
