@@ -6,14 +6,25 @@
   //select input button (query selector), assign it to event listener, so sort of logic if input is selected(checked?) and then button is clicked (query selector, new button and new event listener), then on click show random message (math.random function) from correct array
 
   //if input checked and button clicked, run random message function
+class Message {
+  constructor(message) {
+    this.message = message;
+  }
+}
 
+
+
+// var affirmation() = {
+//   this.affirmation -
+// }
+// var currentAffirmation;
 
 var affirmations = ["I forgive myself and set myself free.",
 "I believe I can be all that I want to be.", "I am in the process of becoming the best version of myself.", "I have the freedom & power to create the life I desire.", "I choose to be kind to myself and love myself unconditionally.", "My possibilities are endless.", "I am worthy of my dreams.", "I am enough.", "I deserve to be healthy and feel good.", "I am full of energy and vitality and my mind is calm and peaceful.", "Every day I am getting healthier and stronger.", "I honor my body by trusting the signals that it sends me.", "I manifest perfect health by making smart choices."];
 
 var mantras = ["Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.", "Don’t let yesterday take up too much of today.", "Every day is a second chance.", "Tell the truth and love everyone.", "I am free from sadness.", "I am enough.", "In the beginning it is you, in the middle it is you and in the end it is you.", "I love myself.", "I am present now.", "Inhale the future, exhale the past.", "This too shall pass.", "Yesterday is not today.", "The only constant is change.", "Onward and upward.", "I am the sky, the rest is weather."];
 
-
+var favoriteMessages = [];
 
 
 var receiveMessageButton = document.querySelector('.receive-message');
@@ -26,6 +37,7 @@ var checkAffirmationRadio = document.getElementById('affirmation-radio');
 var checkMantraRadio = document.getElementById('mantra-radio');
 var meditationImage = document.querySelector('.meditation-img');
 var favoriteButton = document.querySelector('.favorite')
+var secondFavoriteButton = document.querySelector('.favorite-two')
 
 function hideImage() {
   meditationImage.classList.add('hidden');
@@ -34,9 +46,12 @@ function hideImage() {
 function showFavoriteButton() {
   event.preventDefault();
   favoriteButton.classList.remove('hidden');
+  secondFavoriteButton.classList.remove('hidden');
 }
 
 receiveMessageButton.addEventListener('click', createRandomMessage);
+
+favoriteButton.addEventListener('click', addToFavoriteList);
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -55,8 +70,9 @@ function createRandomMessage() {
   } else if (checkMantraRadio.checked) {
     hideImage()
     mantraPhrase.innerHTML += `<article class='new-phrase'>
-      <h4>${mantras[getRandomIndex(mantras)]}</h4
+      <h4 class="the-message">${mantras[getRandomIndex(mantras)]}</h4
       </article`
+      showFavoriteButton();
 
   }
 //   for (i = 0; i < radioButtons.length; i++) {
@@ -68,8 +84,19 @@ function createRandomMessage() {
 //   }
 }
 
+// var currentMessage = document.querySelector('.the-message'.value)
+
+function addToFavoriteList() {
+  var currentMessage = new Message('.new-phrase');
+
+  event.preventDefault();
+  favoriteMessages.push(currentMessage);
+  console.log(favoriteMessages);
+}
 
 
+//I want to save current message on display in favorite messages array
+//when the favorite button is clicked
 
 // function createRandomMessage() {
   // if (checkAffirmationRadio.checked) {
