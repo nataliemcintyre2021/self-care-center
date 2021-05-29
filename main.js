@@ -25,9 +25,15 @@ var mantraPhrase = document.querySelector('.mantra-phrase');
 var checkAffirmationRadio = document.getElementById('affirmation-radio');
 var checkMantraRadio = document.getElementById('mantra-radio');
 var meditationImage = document.querySelector('.meditation-img');
+var favoriteButton = document.querySelector('.favorite')
 
 function hideImage() {
   meditationImage.classList.add('hidden');
+}
+
+function showFavoriteButton() {
+  event.preventDefault();
+  favoriteButton.classList.remove('hidden');
 }
 
 receiveMessageButton.addEventListener('click', createRandomMessage);
@@ -41,10 +47,11 @@ function getRandomIndex(array) {
 function createRandomMessage() {
   mantraPhrase.innerHTML = '';
   if (checkAffirmationRadio.checked) {
-    hideImage()
+    hideImage();
     mantraPhrase.innerHTML += `<article class='new-phrase'>
       <h4>${affirmations[getRandomIndex(affirmations)]}</h4
       </article`
+      showFavoriteButton();
   } else if (checkMantraRadio.checked) {
     hideImage()
     mantraPhrase.innerHTML += `<article class='new-phrase'>

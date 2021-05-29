@@ -82,7 +82,7 @@ body {
   text-align: center;
   padding-right: 300px;
 } */
-.receive-message {
+button {
 
   display: block;
   margin-left: 220px;
@@ -98,6 +98,7 @@ body {
   background-color: #134d71;
   color: #ffffff;
   border-radius: 5px;
+  text-align: center;
 }
 
 .affirmation {
@@ -142,4 +143,23 @@ body {
 .new-phrase {
   color: #000000;
   font-size: large;
+}
+
+/* .favorite {
+  display: block;
+  background-color: #134d71;
+  border: 10px #000000 */
+  /* margin-left: 220px;
+  margin-top: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: small;
+  font-stretch: extra-expanded;
+  align-items: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px; */
 }
