@@ -144,3 +144,54 @@ button {
   color: #000000;
   font-size: large;
 }
+
+ul {
+  list-style-type: none;
+
+}
+
+.message-delete {
+  display: block;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: small;
+  font-stretch: extra-expanded;
+  align-items: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.heart-heading {
+  text-align: center;
+}
+
+.saved-mantras {
+  text-align: center;
+}
+
+.back {
+  display: block;
+  margin-left: inherit;
+  margin-top: 15px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: small;
+  font-stretch: extra-expanded;
+  align-items: center;
+  background-color: #134d71;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+}

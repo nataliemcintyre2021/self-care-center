@@ -8,11 +8,12 @@
   //if input checked and button clicked, run random message function
 class Message {
   constructor(message) {
+    this.id = Date.now();
     this.message = message;
   }
 }
 
-
+var newObject = new Message(currentQuote)
 
 // var affirmation() = {
 //   this.affirmation -
@@ -49,6 +50,7 @@ var viewFavoritesPage = document.querySelector('.view-favorites');
 var backToMainPageButton = document.querySelector('.back');
 var deleteMessageButton = document.querySelector('.delete');
 
+
 function hideImage() {
   meditationImage.classList.add('hidden');
 }
@@ -78,7 +80,12 @@ secondFavoriteButton.addEventListener('click', viewFavorites);
 
 backToMainPageButton.addEventListener('click', showMainPage);
 
-deleteMessageButton.addEventListener('click', deleteMessage);
+viewFavoritesPage.addEventListener('click', deleteMessage);
+// messageDeleteButton.addEventListener('click', deleteQuote);
+
+// deleteMessageButton.addEventListener('click', deleteMessage);
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -128,28 +135,72 @@ function createRandomMessage() {
 
 
 function viewFavorites() {
-  favoritesArea.innerText = favoriteMessages;
+  favoritesArea.innerHTML = "";
+  for (i = 0; i < favoriteMessages.length; i++) {
+    favoritesArea.innerHTML += `<ul class="new-page" id="${favoriteMessages[i].id}">
+    <li class="saved-mantras">${favoriteMessages[i].message}</li>
+    <li><button class="message-delete">Delete</button></li></ul>`
+  }
 
-
+  // var messageDeleteButton = document.querySelector('.message-delete');
   hideMainPage();
 }
 
-function addToFavoriteList() {
-  
+function removeQuote(quote) {
+  var element = quote;
+  element.remove();
+}
 
+function addToFavoriteList() {
   event.preventDefault();
-  favoriteMessages.push(currentQuote);
-  for (i = 0; i < favoriteMessages.length; i++) {
-    favoritesArea.innerHTML += `<ul class="favorite-area">
-    <li>${favoriteMessages[i]}</li></ul>`
-  }
+
+  var newObject = new Message(currentQuote)
+  favoriteMessages.push(newObject);
+
+  // for (i = 0; i < favoriteMessages.length; i++) {
+  //   favoritesArea.innerHTML += `<ul class="favorite-area">
+  //   <li>${favoriteMessages[i].message}</li></ul>`
+  // }
   console.log(favoriteMessages);
 }
+
 
 
 function deleteMessage() {
-  favoriteMessages.pop();
-  favoritesArea.innerText = favoriteMessages;
-  console.log(favoriteMessages);
+  var deleteThis = event.target.closest(".new-page");
+  console.log(deleteThis)
+  if (deleteThis) {
+    for (i = 0; i < favoriteMessages.length; i++) {
+      console.log(typeof favoriteMessages[i].id)
+      console.log(typeof deleteThis.id)
+      if (favoriteMessages[i].id === Number(deleteThis.id)) {
+        favoriteMessages.splice(i, 1)
+      }
+      console.log(favoriteMessages)
+  }
+      viewFavorites();
+  }
 }
-//add innerHTML that adds ul and lis
+
+
+
+
+//   favoriteMessages.pop();
+//   // favoritesArea.innerText = favoriteMessages.message;
+//   // for (i = 0; i < favoriteMessages.length; i++) {
+//   //   if (favoriteMessages.message
+//   // favoritesArea.innerHTML += `<ul class="favorite-area">
+//   // <li>${favoriteMessages[i].message}</li></ul>`
+//
+//   // favoritesArea.innerText = favoriteMessages;
+//
+//   console.log(favoriteMessages);
+// }
+
+// function deleteMessage() {
+//   for (i = 0; i < favoriteMessages.length) {
+//
+//   }
+// }
+
+//push an object into favoriteMessages array with id and message
