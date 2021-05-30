@@ -137,7 +137,7 @@ function createRandomMessage() {
 function viewFavorites() {
   favoritesArea.innerHTML = "";
   for (i = 0; i < favoriteMessages.length; i++) {
-    favoritesArea.innerHTML += `<ul class="new-page" id="${favoriteMessages[i].id}">
+    favoritesArea.innerHTML += `<ul class="new-page" data-id="${favoriteMessages[i].id}">
     <li class="saved-mantras">${favoriteMessages[i].message}</li>
     <li><button class="message-delete">Delete</button></li></ul>`
   }
@@ -167,13 +167,14 @@ function addToFavoriteList() {
 
 
 function deleteMessage() {
+  console.log(event)
   var deleteThis = event.target.closest(".new-page");
   console.log(deleteThis)
   if (deleteThis) {
     for (i = 0; i < favoriteMessages.length; i++) {
       console.log(typeof favoriteMessages[i].id)
-      console.log(typeof deleteThis.id)
-      if (favoriteMessages[i].id === Number(deleteThis.id)) {
+      console.log(typeof deleteThis.dataset.id)
+      if (favoriteMessages[i].id === Number(deleteThis.dataset.id)) {
         favoriteMessages.splice(i, 1)
       }
       console.log(favoriteMessages)
